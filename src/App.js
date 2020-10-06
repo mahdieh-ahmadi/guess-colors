@@ -2,6 +2,8 @@ import React, { useEffect  } from 'react';
 import {connect} from 'react-redux'
 import {BrowserRouter, Route , Switch} from 'react-router-dom'
 
+import Main from './containers/main'
+
 
 const App = () => {
 
@@ -13,7 +15,7 @@ const App = () => {
       <Route path = '/Select_movie'  component={ Select }/>
       <Route path = '/' component={ Main }/>
       </Switch> */}
-      pleas start!
+      <Main />
       
     </div>
     </BrowserRouter>
