@@ -1,0 +1,30 @@
+.rules{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 200px;
+}
+
+.paragraph_rule{
+    border: 1px solid #ccc;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 10px 20px;
+    margin-top: 10px;
+    animation: show 0.3s backwards ease-in;
+}
+
+.rules_btn{
+    background-color: transparent;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-weight: 550;
+}
+
+@keyframes show{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
