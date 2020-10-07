@@ -1,21 +1,28 @@
 import React from 'react'
 
 import BlockGame from '../../components/block_game/block_game'
+import SelectBox from '../../components/block_game/selectBox/selectBox'
+
+import './game_space.css'
 
 const Game = () => {
     let blocknumber = []
-    for(let i = 1 ; i < 10 ; i++){
+    for(let i = 1 ; i <= 10 ; i++){
         blocknumber.push( i)
-    }
-    console.log(blocknumber)
-    return <div>
-        <BlockGame />
+    } 
+
+    return <div className = 'main_game'>
+        <div>
         {
-            blocknumber.map(item => {
-                console.log(item)
-                return <BlockGame />
+            blocknumber.map(i => {
+                return <BlockGame key={i}/>
             })
         }
+        </div>
+        <div className='select_color'>
+            <SelectBox />
+        </div>
+        
     </div> 
 }
 

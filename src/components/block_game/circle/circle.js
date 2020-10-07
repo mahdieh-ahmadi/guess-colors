@@ -3,7 +3,10 @@ import React from 'react'
 import './circle.css'
 
 const Circle = props => {
-    return <div className = 'circle' style={{'backgroundColor' : `${props.bgColor}`}}>
+    return <div 
+    className = 'circle' 
+    key = {props.key}
+    style={{'backgroundColor' : `${props.bgColor}`}}>
 
     </div>
 }

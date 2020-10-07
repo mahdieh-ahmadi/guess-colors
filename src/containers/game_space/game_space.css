@@ -1,0 +1,6 @@
+.main_game{
+    width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
