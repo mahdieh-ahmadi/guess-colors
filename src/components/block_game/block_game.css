@@ -1,0 +1,6 @@
+.blockGame{
+    display: flex;
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
