@@ -1,5 +1,5 @@
 import React, { useEffect  } from 'react';
-import {connect} from 'react-redux'
+/* import {connect} from 'react-redux' */
 import {BrowserRouter, Route , Switch} from 'react-router-dom'
 
 import Main from './containers/main'

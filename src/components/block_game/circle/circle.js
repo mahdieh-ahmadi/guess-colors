@@ -6,7 +6,8 @@ const Circle = props => {
     return <div 
     className = 'circle' 
     key = {props.key}
-    style={{'backgroundColor' : `${props.bgColor}`}}>
+    style={{'backgroundColor' : `${props.bgColor}`}}
+    onClick = {props.clicked}>
 
     </div>
 }
