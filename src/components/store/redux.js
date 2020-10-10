@@ -1,7 +1,9 @@
 import * as actionsType from './actions'
 
 const initialstate = {
-    bgcolor : 'white'
+    bgcolor : 'white',
+    correctLayout : [],
+    layout : ['wite' , 'white' , 'white' , 'white'],
 }
 
 const reducer = (state = initialstate , action) => {
