@@ -8,3 +8,15 @@
 .blockGameColor{
     display: flex;
 }
+
+.check-block{
+    width: 20px;
+    height: 20px;
+    padding: 15px;
+}
+
+.check-mark{
+    font-size: 25px;
+    color: green;
+    cursor: pointer;
+}

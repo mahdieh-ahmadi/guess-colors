@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import Circle from './circle/circle'
 import CheckBox from './check_box/check_box'
+import * as actions from './../store/actions'
 
 import './block_game.css'
 
@@ -17,15 +18,19 @@ const BlockGame = props => {
         switch (select) {
             case 'one':
                 setBackColor1(props.selectColor)
+                props.change_vectore(0 , props.selectColor)
                 break;
             case 'two':
                 setBackColor2(props.selectColor)
+                props.change_vectore(1 , props.selectColor )
                 break;
             case 'tree':
                 setBackColor3(props.selectColor)
+                props.change_vectore(2 ,props.selectColor)
                 break;
             case 'foure':
                 setBackColor4(props.selectColor)
+                props.change_vectore(3 , props.selectColor)
                 break;
         
             default:
@@ -44,14 +49,24 @@ const BlockGame = props => {
         <div className = 'blockGameCheck'>
             <CheckBox />
         </div>
+        <div className='check-block'>
+            {props.check ? <div className='check-mark'> &#10004; </div> : null}
+        </div>
         
     </div>
 }
 
 const mapStateToProps = state => {
     return{
-        selectColor : state.bgcolor
+        selectColor : state.bgcolor,
+        check : state.check,
+        vectore_color : state.correctLayout
     }
 }
 
-export default connect(mapStateToProps)(BlockGame)
+const mapdispatchToProps = dispatch => {return {
+    change_vectore : (num , color) => dispatch({type : actions.change_vectore , select : num , color : color})
+}
+}
+
+export default connect(mapStateToProps , mapdispatchToProps)(BlockGame)
