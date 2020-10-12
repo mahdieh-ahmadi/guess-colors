@@ -6,7 +6,7 @@ import Rules from '../../components/rules/rules'
 import './header.css'
 
 const Header = () => {
-    const [show , setShow] = useState(true) 
+    const [show , setShow] = useState(false) 
 
     const changeShow = () => {
         setShow(!show)

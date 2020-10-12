@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState , useEffect} from 'react'
 import {connect} from 'react-redux'
 
 import Circle from './circle/circle'
@@ -14,23 +14,32 @@ const BlockGame = props => {
     const [backColor3,setBackColor3] = useState('white')
     const [backColor4,setBackColor4] = useState('white')
 
+
     const changBack = (select) => {
         switch (select) {
             case 'one':
                 setBackColor1(props.selectColor)
                 props.change_vectore(0 , props.selectColor)
+                props.check()
+                /* props.rerender() */
                 break;
             case 'two':
                 setBackColor2(props.selectColor)
                 props.change_vectore(1 , props.selectColor )
+                props.check()
+                /* props.rerender() */
                 break;
             case 'tree':
                 setBackColor3(props.selectColor)
                 props.change_vectore(2 ,props.selectColor)
+                props.check()
+                /* props.rerender() */
                 break;
             case 'foure':
                 setBackColor4(props.selectColor)
                 props.change_vectore(3 , props.selectColor)
+                props.check()
+                /* props.rerender() */
                 break;
         
             default:
@@ -50,7 +59,7 @@ const BlockGame = props => {
             <CheckBox />
         </div>
         <div className='check-block'>
-            {props.check ? <div className='check-mark'> &#10004; </div> : null}
+            {props.checks ? <div className='check-mark'> &#10004; </div> : null}
         </div>
         
     </div>
@@ -59,13 +68,14 @@ const BlockGame = props => {
 const mapStateToProps = state => {
     return{
         selectColor : state.bgcolor,
-        check : state.check,
-        vectore_color : state.correctLayout
+        vectore_color : state.correctLayout,
+        checkk : state.check
     }
 }
 
 const mapdispatchToProps = dispatch => {return {
-    change_vectore : (num , color) => dispatch({type : actions.change_vectore , select : num , color : color})
+    change_vectore : (num , color) => dispatch({type : actions.change_vectore , select : num , color : color}),
+    check : () => dispatch({type : actions.check_block})
 }
 }
 
