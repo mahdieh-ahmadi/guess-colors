@@ -29,6 +29,22 @@ const reducer = (state = initialstate , action) => {
             let checks = state.checkstate
             checks[state.i] = checkk 
             return {...state , check : checkk , checkstate : checks}
+
+        case actionsType.checkLayout:
+            let i
+            let newstate =state.checkstate
+            for (let index = 0; index < newstate.length; index++) {
+                if(newstate[index] == true){
+                    i = index
+                }    
+            }
+            console.log(i)
+            newstate[i] = false
+            newstate[i+1] = true;
+            return {...state , 
+                checkstate : newstate , 
+                layout : ['white' , 'white' , 'white' , 'white'] , 
+                i : state.i+1}
     
         default:
             return {...state}
