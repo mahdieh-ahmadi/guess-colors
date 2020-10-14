@@ -1,4 +1,4 @@
-import React,{useState , useEffect} from 'react'
+import React,{ useState } from 'react'
 import {connect} from 'react-redux'
 
 import Circle from './circle/circle'
@@ -18,28 +18,28 @@ const BlockGame = props => {
     const changBack = (select) => {
         switch (select) {
             case 'one':
+                if(props.checkActive) {
                 setBackColor1(props.selectColor)
                 props.change_vectore(0 , props.selectColor)
-                props.check()
-                /* props.rerender() */
+                props.check()} 
                 break;
             case 'two':
+                if(props.checkActive){
                 setBackColor2(props.selectColor)
                 props.change_vectore(1 , props.selectColor )
-                props.check()
-                /* props.rerender() */
+                props.check()} 
                 break;
             case 'tree':
+                if(props.checkActive) {
                 setBackColor3(props.selectColor)
                 props.change_vectore(2 ,props.selectColor)
-                props.check()
-                /* props.rerender() */
+                props.check()} 
                 break;
             case 'foure':
+                if(props.checkActive)  {
                 setBackColor4(props.selectColor)
                 props.change_vectore(3 , props.selectColor)
-                props.check()
-                /* props.rerender() */
+                props.check()}
                 break;
         
             default:
@@ -47,19 +47,28 @@ const BlockGame = props => {
         }
     }
 
-
-    return<div className='blockGame' key={props.key}>
+    let checks = false
+    if(backColor1 !== 'white' && 
+    backColor2 !== 'white' && 
+    backColor3 !== 'white' && 
+    backColor4 !== 'white'){
+        checks = true
+    }
+    
+    return<div className='blockGame' key={props.key} style={
+        props.checkActive ? {'border' : '1px solid black'}: { }
+    }>
         <div className = 'blockGameColor'>
-            <Circle bgColor={backColor1} key='100' clicked={() => changBack('one')}/>
-            <Circle bgColor={backColor2} key='2sf' clicked={() => changBack('two')}/>
-            <Circle bgColor={backColor3} key='3wer' clicked={() => changBack('tree')}/>
-            <Circle bgColor={backColor4} key='4fre' clicked={() => changBack('foure')}/>
+            <Circle bgColor={backColor1} key = {'first'} clicked={() => changBack('one')}/>
+            <Circle bgColor={backColor2} key = {'second'} clicked={() => changBack('two')}/>
+            <Circle bgColor={backColor3} key = {'tird'} clicked={() => changBack('tree')}/>
+            <Circle bgColor={backColor4} key = {'fourth'} clicked={() => changBack('foure')}/>
         </div>
         <div className = 'blockGameCheck'>
-            <CheckBox />
+            <CheckBox keyr={Math.random()} />
         </div>
         <div className='check-block'>
-            {props.checks ? <div className='check-mark'> &#10004; </div> : null}
+            {checks ? <div className='check-mark'> &#10004; </div> : null}
         </div>
         
     </div>
@@ -69,7 +78,6 @@ const mapStateToProps = state => {
     return{
         selectColor : state.bgcolor,
         vectore_color : state.correctLayout,
-        checkk : state.check
     }
 }
 

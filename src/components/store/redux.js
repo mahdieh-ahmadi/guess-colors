@@ -4,7 +4,8 @@ const initialstate = {
     bgcolor : 'white',
     correctLayout : [],
     layout : ['white' , 'white' , 'white' , 'white'],
-    check : [false,false,false,false,false,false,false,false,false,false],
+    checkstate : [true,false,false,false,false,false,false,false,false,false],
+    check : false,
     i : 0
 }
 
@@ -19,15 +20,15 @@ const reducer = (state = initialstate , action) => {
             return{...state , layout : colors}
 
         case actionsType.check_block:
-            let check = true
+            let checkk = true
             state.layout.forEach((i) => {
                 if(i === 'white') {
-                    check = false
+                    checkk = false
                 }
             })
-            let checks = state.check
-            checks[state.i] = check 
-            return {...state , check : checks}
+            let checks = state.checkstate
+            checks[state.i] = checkk 
+            return {...state , check : checkk , checkstate : checks}
     
         default:
             return {...state}

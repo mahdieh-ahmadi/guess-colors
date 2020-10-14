@@ -1,18 +1,19 @@
-import React,{useEffect, useState} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 
 import BlockGame from '../../components/block_game/block_game'
 import SelectBox from '../../components/block_game/selectBox/selectBox'
-import * as actions from '../../components/store/actions'
+/* import * as actions from '../../components/store/actions' */
 
 import './game_space.css'
 
 const Game = props => {
+
     return <div className = 'main_game'>
         <div>
         {
             props.checkstate.map(i => {
-                return <BlockGame key={i + Math.random()} checks={i} /> 
+                return <BlockGame key={i + Math.random()} checkActive={i}/> 
             })
         }
         </div>
@@ -24,12 +25,9 @@ const Game = props => {
 }
 
 const mapStateToProps = state => {return {
-        checkstate : state.check
+        checkstate : state.checkstate,
+        layout : state.layout
     }
 }
 
-const mapDispatchToProps = dispatch => {return{
-    check : () => dispatch({type : actions.check_block})
-}}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Game)
+export default connect(mapStateToProps)(Game)

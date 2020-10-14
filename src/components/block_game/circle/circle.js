@@ -5,7 +5,7 @@ import './circle.css'
 const Circle = props => {
     return <div 
     className = 'circle' 
-    key = {props.key}
+    key = {props.keyword}
     style={{'backgroundColor' : `${props.bgColor}`}}
     onClick = {props.clicked}>
 
