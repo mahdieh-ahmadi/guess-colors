@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 const Main = props => {
     useEffect(() => {
         props.setLayout()
+        props.setAnswer()
     },[])
 
     return(<div className='main'>
@@ -25,7 +26,8 @@ const mapStateToProps = state => {return{
 }}
 
 const mapDispatchToProps = dispatch => {return{
-    setLayout : () => dispatch({type : actions.setLayout})
+    setLayout : () => dispatch({type : actions.setLayout}),
+    setAnswer : () => dispatch ({type : actions.setAnswer})
 }}
 
 export default connect(mapStateToProps,mapDispatchToProps)(Main)
