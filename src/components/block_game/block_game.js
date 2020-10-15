@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 
 import Circle from './circle/circle'
@@ -9,49 +9,17 @@ import './block_game.css'
 
 const BlockGame = props => {
 
-    const [backColor1,setBackColor1] = useState('white')
-    const [backColor2,setBackColor2] = useState('white')
-    const [backColor3,setBackColor3] = useState('white')
-    const [backColor4,setBackColor4] = useState('white')
-
-
-    const changBack = (select) => {
-        switch (select) {
-            case 'one':
-                if(props.checkActive) {
-                setBackColor1(props.selectColor)
-                props.change_vectore(0 , props.selectColor)
-                props.check()} 
-                break;
-            case 'two':
-                if(props.checkActive){
-                setBackColor2(props.selectColor)
-                props.change_vectore(1 , props.selectColor )
-                props.check()} 
-                break;
-            case 'tree':
-                if(props.checkActive) {
-                setBackColor3(props.selectColor)
-                props.change_vectore(2 ,props.selectColor)
-                props.check()} 
-                break;
-            case 'foure':
-                if(props.checkActive)  {
-                setBackColor4(props.selectColor)
-                props.change_vectore(3 , props.selectColor)
-                props.check()}
-                break;
-        
-            default:
-                break;
-        }
+    const changBack = (item , select) => {
+        if(props.checkActive) {
+            props.change_vectore( item, select , props.selectColor)
+            props.check()} 
     }
 
     let checks = false
-    if(backColor1 !== 'white' && 
-    backColor2 !== 'white' && 
-    backColor3 !== 'white' && 
-    backColor4 !== 'white'){
+    if(props.bgcl1 !== 'white' && 
+      props.bgcl2!== 'white' && 
+      props.bgcl3 !== 'white' && 
+      props.bgcl4 !== 'white'){
         checks = true
     }
     
@@ -59,10 +27,10 @@ const BlockGame = props => {
         props.checkActive ? {'border' : '1px solid black'}: { }
     }>
         <div className = 'blockGameColor'>
-            <Circle bgColor={backColor1} key = {'first'} clicked={() => changBack('one')}/>
-            <Circle bgColor={backColor2} key = {'second'} clicked={() => changBack('two')}/>
-            <Circle bgColor={backColor3} key = {'tird'} clicked={() => changBack('tree')}/>
-            <Circle bgColor={backColor4} key = {'fourth'} clicked={() => changBack('foure')}/>
+            <Circle bgColor={props.bgcl1} key = {'first'} clicked={() => changBack(props.counter,0)}/>
+            <Circle bgColor={props.bgcl2} key = {'second'} clicked={() => changBack(props.counter,1)}/>
+            <Circle bgColor={props.bgcl3} key = {'tird'} clicked={() => changBack(props.counter,2)}/>
+            <Circle bgColor={props.bgcl4} key = {'fourth'} clicked={() => changBack(props.counter,3)}/>
         </div>
         <div className = 'blockGameCheck'>
             <CheckBox keyr={Math.random()} />
@@ -82,7 +50,7 @@ const mapStateToProps = state => {
 }
 
 const mapdispatchToProps = dispatch => {return {
-    change_vectore : (num , color) => dispatch({type : actions.change_vectore , select : num , color : color}),
+    change_vectore : (item , num , color) => dispatch({type : actions.change_vectore , select : num , color : color , item : item}),
     check : () => dispatch({type : actions.check_block}),
     checkLayout : () => dispatch({type : actions.checkLayout})
 }

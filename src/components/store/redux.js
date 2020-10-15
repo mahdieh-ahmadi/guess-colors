@@ -3,7 +3,7 @@ import * as actionsType from './actions'
 const initialstate = {
     bgcolor : 'white',
     correctLayout : [],
-    layout : ['white' , 'white' , 'white' , 'white'],
+    layout : [],
     checkstate : [true,false,false,false,false,false,false,false,false,false],
     check : false,
     i : 0
@@ -11,13 +11,23 @@ const initialstate = {
 
 const reducer = (state = initialstate , action) => {
     switch (action.type) {
+        case actionsType.setLayout:
+            const newlayout = [];
+            for(let i =0 ; i<10 ; i++){
+                newlayout.push(['white' , 'white' , 'white' , 'white'])
+            }
+            return{...state ,layout : newlayout}
+
         case actionsType.Select_background_color:
             return {...state , bgcolor : action.color}
 
         case actionsType.change_vectore :
-            let colors = state.layout
+            let newLayout = state.layout
+            let colors = newLayout[action.item]
             colors[action.select] = action.color
-            return{...state , layout : colors}
+            newLayout[action.item] = colors
+            return{...state , 
+                layout : [...state.layout , [...state.layout[action.item] , state.layout[action.item][action.select] = action.color]]}
 
         case actionsType.check_block:
             let checkk = true
@@ -34,7 +44,7 @@ const reducer = (state = initialstate , action) => {
             let i
             let newstate =state.checkstate
             for (let index = 0; index < newstate.length; index++) {
-                if(newstate[index] == true){
+                if(newstate[index] === true){
                     i = index
                 }    
             }
