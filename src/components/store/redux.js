@@ -45,7 +45,7 @@ const reducer = (state = initialstate , action) => {
                         newcheckstate.push(2) // satate and color is correct
                     }else{
                         let n = state.layout[state.i].includes(state.correctLayout[j] , 0)
-                        console.log('includes ' + n)
+                        console.log(state.correctLayout[j] , 'includes ' + n)
                         if(n === true){
                             newcheckstate.push(3) // color is correct but state is incorrect
                         }else{
@@ -53,10 +53,11 @@ const reducer = (state = initialstate , action) => {
                         }
                     }
                 }
-                console.log(newcheckstate)
+                
                 return {...state , 
                     checkstate : [...state.checkstate ] , 
-                    i : state.i+1}
+                    i : state.i+1,
+                    checkbox : newcheckstate}
             }else{
                 return{...state}
             }
