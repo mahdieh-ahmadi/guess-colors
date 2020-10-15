@@ -11,8 +11,7 @@ const BlockGame = props => {
 
     const changBack = (item , select) => {
         if(props.checkActive) {
-            props.change_vectore( item, select , props.selectColor)
-            props.check()} 
+            props.change_vectore( item, select , props.selectColor)} 
     }
 
     let checks = false
@@ -36,7 +35,7 @@ const BlockGame = props => {
             <CheckBox keyr={Math.random()} />
         </div>
         <div className='check-block'>
-            {checks ? <div className='check-mark' onClick={props.checkLayout}> &#10004; </div> : null}
+            {checks ? <div className='check-mark' onClick={() => props.checkLayout(props.counter)}> &#10004; </div> : null}
         </div>
         
     </div>
@@ -51,8 +50,7 @@ const mapStateToProps = state => {
 
 const mapdispatchToProps = dispatch => {return {
     change_vectore : (item , num , color) => dispatch({type : actions.change_vectore , select : num , color : color , item : item}),
-    check : () => dispatch({type : actions.check_block}),
-    checkLayout : () => dispatch({type : actions.checkLayout})
+    checkLayout : (num) => dispatch({type : actions.checkLayout , num : num})
 }
 }
 

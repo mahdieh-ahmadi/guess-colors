@@ -40,8 +40,7 @@ const Game = props => {
 const mapStateToProps = state => {return {
         checkstate : state.checkstate,
         layout : state.layout,
-        bgcolor : state.bgcolor,
-        check : state.check
+        bgcolor : state.bgcolor
     }
 }
 
