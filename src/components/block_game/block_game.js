@@ -32,7 +32,12 @@ const BlockGame = props => {
             <Circle bgColor={props.bgcl4} key = {'fourth'} clicked={() => changBack(props.counter,3)}/>
         </div>
         <div className = 'blockGameCheck'>
-            <CheckBox keyr={Math.random()} />
+            <CheckBox 
+            keyr={Math.random()} 
+            sign1={props.sign1}
+            sign2={props.sign2}
+            sign3={props.sign3}
+            sign4={props.sign4}/> 
         </div>
         <div className='check-block'>
             {checks ? <div className='check-mark' onClick={() => props.checkLayout(props.counter)}> &#10004; </div> : null}

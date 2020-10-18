@@ -6,10 +6,10 @@ import './checkbox.css'
 
 const CheckBox = props => {
     return <div className='checkbox' key={props.keyr}>
-        <TinyCircle  Key = {'first'} bgcolor='white'/>
-        <TinyCircle  Key = {'second'} bgcolor='white'/>
-        <TinyCircle Key = {'tird'} bgcolor='white'/>
-        <TinyCircle Key = {'fourse'} bgcolor='white' />
+        <TinyCircle  Key = {'first'} bgcolor='white' sign={props.sign1}/>
+        <TinyCircle  Key = {'second'} bgcolor='white' sign={props.sign2}/>
+        <TinyCircle Key = {'tird'} bgcolor='white' sign={props.sign3}/>
+        <TinyCircle Key = {'fourse'} bgcolor='white' sign={props.sign4}/> 
     </div>
 }
 

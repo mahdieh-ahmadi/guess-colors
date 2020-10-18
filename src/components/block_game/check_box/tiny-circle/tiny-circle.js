@@ -7,7 +7,10 @@ const Tiny_circle = props => {
     style={{'backgroundColor' : `${props.bgcolor}`}} 
     className='tiny_circle'
     key = {props.Key}>
-        
+        {props.sign === 1 ? null : 
+        (props.sign == 2 ? <span className='tick signs'> &#10004; </span> : 
+        (props.sign === 4 ? <span className='mul signs'>&#10005;</span> : 
+        <div className='gray_span'></div>))}
     </div>
 }
 

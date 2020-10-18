@@ -14,10 +14,12 @@ const reducer = (state = initialstate , action) => {
     switch (action.type) {
         case actionsType.setLayout:
             const newlayout = [];
+            const newcheckbox = [];
             for(let i =0 ; i<10 ; i++){
                 newlayout.push(['white' , 'white' , 'white' , 'white'])
+                newcheckbox.push([1,1,1,1])
             }
-            return{...state ,layout : newlayout}
+            return{...state ,layout : newlayout , checkbox : newcheckbox}
 
         case actionsType.Select_background_color:
             return {...state , bgcolor : action.color}
@@ -34,6 +36,7 @@ const reducer = (state = initialstate , action) => {
             let i = state.i
             if(action.num === i){
                 let newstate = state.checkstate;
+                let newcheckbox = state.checkbox;
                 let newcheckstate = []
 
                 newstate[i] = false;
@@ -45,7 +48,6 @@ const reducer = (state = initialstate , action) => {
                         newcheckstate.push(2) // satate and color is correct
                     }else{
                         let n = state.layout[state.i].includes(state.correctLayout[j] , 0)
-                        console.log(state.correctLayout[j] , 'includes ' + n)
                         if(n === true){
                             newcheckstate.push(3) // color is correct but state is incorrect
                         }else{
@@ -54,10 +56,11 @@ const reducer = (state = initialstate , action) => {
                     }
                 }
                 
+                newcheckbox[i] = newcheckstate
                 return {...state , 
                     checkstate : [...state.checkstate ] , 
                     i : state.i+1,
-                    checkbox : newcheckstate}
+                    checkbox : [...state.checkbox]}
             }else{
                 return{...state}
             }
@@ -72,7 +75,7 @@ const reducer = (state = initialstate , action) => {
             return{...state , correctLayout : answer}
         default:
             return {...state}
-    }
+    } 
 }
 
 export default reducer

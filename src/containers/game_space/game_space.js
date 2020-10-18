@@ -25,7 +25,11 @@ const Game = props => {
                     bgcl2 = {props.layout[counter][1]}
                     bgcl3 = {props.layout[counter][2]}
                     bgcl4 = {props.layout[counter][3]}
-                    counter={counter}/> 
+                    counter={counter}
+                    sign1={props.checkbox[counter][0]}
+                    sign2={props.checkbox[counter][1]}
+                    sign3={props.checkbox[counter][2]}
+                    sign4={props.checkbox[counter][3]}/> 
                     })
                 }
             </div>
@@ -40,7 +44,8 @@ const Game = props => {
 const mapStateToProps = state => {return {
         checkstate : state.checkstate,
         layout : state.layout,
-        bgcolor : state.bgcolor
+        bgcolor : state.bgcolor,
+        checkbox : state.checkbox
     }
 }
 
