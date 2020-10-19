@@ -14,13 +14,18 @@ const SelectBox = props => {
 
     return <div className='selectColor'>
         {props.colors.map(item => {
-            return <Circle bgColor={item} key={item} clicked={() => change_bg_color(item)}/>
+            return <Circle 
+            bgColor={item} 
+            key={item} 
+            clicked={() => change_bg_color(item)}
+            style = {item === props.bgcolor }/>
         })}
     </div>
 }
 
 const mapStateToProps = state => {return{
-    colors : state.colors
+    colors : state.colors,
+    bgcolor : state.bgcolor
 }}
 
 const mapDispatchToProps = dispatch => {return {

@@ -11,6 +11,7 @@ const initialstate = {
     i : 0
 }
 
+
 const reducer = (state = initialstate , action) => {
     switch (action.type) {
         case actionsType.setLayout:
