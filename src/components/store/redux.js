@@ -43,7 +43,6 @@ const reducer = (state = initialstate , action) => {
 
                 newstate[i] = false;
                 newstate[i+1] = true;
-                console.log(state.layout[state.i] , state.correctLayout )
                 
                 for(let j = 0 ; j< state.correctLayout.length ; j++){
                     if(state.layout[state.i][j] === state.correctLayout[j]){
