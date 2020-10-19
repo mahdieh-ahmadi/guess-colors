@@ -5,8 +5,8 @@ const initialstate = {
     correctLayout : [],
     layout : [],
     checkstate : [true,false,false,false,false,false,false,false,false,false],
-    colors : ['orange' , 'lightcoral' , 'lightgreen' , 'lightskyblue' , 'rgb(123, 0, 81)'],
-    checkbox : [1 , 1 , 1 , 1],
+    colors : ['orange' , 'lightcoral' , 'lightgreen' , 'lightskyblue' , 'rgb(123, 0, 81)' , 'red'],
+    checkbox : [],
     win : 1, // 1=> continue , 2=> winn , 3=> lose
     i : 0
 }
@@ -82,7 +82,10 @@ const reducer = (state = initialstate , action) => {
             }
             
         case actionsType.setAnswer:
-            let selects = [parseInt(Math.random()*5),parseInt(Math.random()*5),parseInt(Math.random()*5),parseInt(Math.random()*5)]
+            let selects = [parseInt(Math.random()*state.colors.length),
+                parseInt(Math.random()*state.colors.length),
+                parseInt(Math.random()*state.colors.length),
+                parseInt(Math.random()*state.colors.length)]
             const answer = []
             selects.map(item => {
                 answer.push(state.colors[item])

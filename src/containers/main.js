@@ -4,6 +4,7 @@ import Header from './Header/header'
 import GameSpace from './game_space/game_space'
 import * as actions from '../components/store/actions'
 import Backdrop from '../components/hoc/backdrop/backddrop'
+import Cards from '../components/hoc/cards/cards'
 
 import './main.css'
 import { connect } from 'react-redux'
@@ -24,12 +25,8 @@ const Main = props => {
 
     return(<div className='main'>
         { props.win !== 1 ? <Backdrop click={reset} content={
-             props.win == 2 ? <div>
-             you are win!
-            </div> : 
-            <div>
-                you are lose!
-            </div>
+             props.win === 2 ? <Cards class={'win'} content={'You are win!'}/>: 
+             <Cards class={'lose'} content={'You are lose!'}/>
         }/>
          : null}
         <Header />
