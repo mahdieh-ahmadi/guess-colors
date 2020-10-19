@@ -7,6 +7,7 @@ const initialstate = {
     checkstate : [true,false,false,false,false,false,false,false,false,false],
     colors : ['orange' , 'lightcoral' , 'lightgreen' , 'lightskyblue' , 'rgb(123, 0, 81)'],
     checkbox : [1 , 1 , 1 , 1],
+    win : 1, // 1=> continue , 2=> winn , 3=> lose
     i : 0
 }
 
@@ -41,7 +42,7 @@ const reducer = (state = initialstate , action) => {
 
                 newstate[i] = false;
                 newstate[i+1] = true;
-                console.log(state.layout[state.i] , state.correctLayout ,state.layout[state.i] == state.correctLayout)
+                console.log(state.layout[state.i] , state.correctLayout )
                 
                 for(let j = 0 ; j< state.correctLayout.length ; j++){
                     if(state.layout[state.i][j] === state.correctLayout[j]){
@@ -55,12 +56,27 @@ const reducer = (state = initialstate , action) => {
                         }
                     }
                 }
-                
+                newcheckstate.sort();
                 newcheckbox[i] = newcheckstate
-                return {...state , 
-                    checkstate : [...state.checkstate ] , 
-                    i : state.i+1,
-                    checkbox : [...state.checkbox]}
+                let checkwin = true;
+                newcheckstate.forEach(element => {
+                    if(element !== 2)  checkwin = false ;
+                });
+
+                if(i === 9){
+                    return{...state , win : 3}
+                }else {
+                    if(checkwin === true){
+                    return{...state , win : 2}
+                    }else{
+                        return {...state , 
+                            checkstate : [...state.checkstate ] , 
+                            i : state.i+1,
+                            checkbox : [...state.checkbox],
+                            win : 1}
+                    }
+                }
+                
             }else{
                 return{...state}
             }
@@ -73,6 +89,12 @@ const reducer = (state = initialstate , action) => {
                 return 0
             })
             return{...state , correctLayout : answer}
+
+        case actionsType.reset:
+            return{...state , 
+                win:1 , 
+                checkstate : [true,false,false,false,false,false,false,false,false,false],
+                i : 0}
         default:
             return {...state}
     } 
