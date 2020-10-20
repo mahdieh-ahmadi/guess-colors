@@ -11,3 +11,42 @@
     padding: 0 15px;
     font-weight: 100;
 }
+
+.letters{
+    display: flex;
+}
+
+@media(max-width : 650px){
+    .title_master h1{
+        font-size: 60px;
+    }
+}
+
+@media(max-width : 550px){
+    .title_master h1{
+        font-size: 50px;
+    }
+}
+
+@media(max-width : 450px){
+    .title_master{
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .title_master h1{
+        padding: 0;
+        margin: 0;
+    }
+
+    .letters{
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media(max-width : 300px){
+    .title_master h1{
+        font-size: 40px;
+    }
+}

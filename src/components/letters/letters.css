@@ -6,3 +6,21 @@
     width: fit-content;
 }
 
+@media (max-width : 650px){
+    .style_letters{
+        font-size: 45px;
+    }
+}
+
+@media(max-width : 550px){
+    .style_letters{
+        font-size: 35px;
+    }
+}
+
+@media(max-width : 300px){
+    .style_letters{
+        padding: 3px 7px;
+        font-size: 33px;
+    }
+}

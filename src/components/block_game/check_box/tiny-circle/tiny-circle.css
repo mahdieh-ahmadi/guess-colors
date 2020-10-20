@@ -31,3 +31,11 @@
     margin-top: -2px;
     color: red;
 }
+
+@media(max-width : 300px){
+    .tiny_circle{
+        width: 7px;
+        height: 7px;
+        margin: 0.2px;
+    }
+}

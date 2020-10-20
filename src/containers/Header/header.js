@@ -14,12 +14,15 @@ const Header = () => {
 
     return <header>
         <div className='title_master'>
-            <Letter symbol='M' bg_color='orange' key='m'/>
-            <Letter symbol='A' bg_color='lightcoral' key='a'/>
-            <Letter symbol='S' bg_color='lightgreen' key='s'/>
-            <Letter symbol='T' bg_color='lightskyblue' key='t'/>
-            <Letter symbol='E' bg_color='rgb(0, 122, 135)' key='e'/>
-            <Letter symbol='R' bg_color='rgb(123, 0, 81)' key='r'/>
+            <span className='letters'>
+                <Letter symbol='M' bg_color='orange' key='m'/>
+                <Letter symbol='A' bg_color='lightcoral' key='a'/>
+                <Letter symbol='S' bg_color='lightgreen' key='s'/>
+                <Letter symbol='T' bg_color='lightskyblue' key='t'/>
+                <Letter symbol='E' bg_color='rgb(0, 122, 135)' key='e'/>
+                <Letter symbol='R' bg_color='rgb(123, 0, 81)' key='r'/>
+            </span>
+            
             <h1>mind</h1>
         </div>
 
